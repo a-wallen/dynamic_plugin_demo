@@ -1,4 +1,4 @@
-import 'package:dynamic_editor_plugin_demo/plugin_loader.dart';
+import 'package:dynamic_editor_plugin_demo/plugin_service.dart';
 import 'package:flutter/material.dart';
 
 /// Shows the available plugins
@@ -8,7 +8,7 @@ class PluginDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: PluginLoader.instance,
+      future: FlowyPluginService.instance,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           final List plugins = snapshot.data!.plugins.toList();

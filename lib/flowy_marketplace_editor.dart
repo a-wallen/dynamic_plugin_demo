@@ -1,5 +1,5 @@
 import 'package:appflowy_editor/appflowy_editor.dart';
-import 'package:dynamic_editor_plugin_demo/plugin_loader.dart';
+import 'package:flowy_plugin/flowy_plugin.dart';
 import 'package:flutter/material.dart';
 
 class FlowyMarketplaceEditor extends StatelessWidget {
@@ -14,15 +14,15 @@ class FlowyMarketplaceEditor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<PluginLoader>(
-      future: PluginLoader.instance,
+    return FutureBuilder<FlowyPluginService>(
+      future: FlowyPluginService.instance,
       builder: (_, snapshot) {
         if (snapshot.hasData) {
-          final List<ShortcutEvent> plugins = snapshot.data!.plugins.toList();
+          final List<FlowyPlugin> plugins = snapshot.data!.plugins.toList();
           return AppFlowyEditor(
             editorState: editorState,
             shortcutEvents: [
-              ...plugins.fold([], (val, plugin) => [...val, plugin ]),
+              ...plugins.fold([], (val, plugin) => [...val, ...plugin.shortcutEvents]),
               ...userShortcutEvents,
             ],
           );

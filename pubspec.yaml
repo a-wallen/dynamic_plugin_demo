@@ -35,6 +35,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   appflowy_editor: ^0.1.6
+  flowy_plugin:
+    path: ../flowy_plugin
   flutter_localizations:
     sdk: flutter
   path: ^1.8.2
@@ -42,7 +44,8 @@ dependencies:
     path: ../flowy_eval
   flutter_eval:
     path: ../flutter_eval
-  dart_eval: ^0.6.0
+  dart_eval:
+    path: ../dart_eval
 
 dev_dependencies:
   flutter_test:
